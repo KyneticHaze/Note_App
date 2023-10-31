@@ -42,7 +42,6 @@ import com.example.note_app.feature_note.presentation.notes.components.NoteItem
 import com.example.note_app.feature_note.presentation.notes.components.OrderSection
 import com.example.note_app.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
-import javax.inject.Singleton
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -74,7 +73,7 @@ fun NotesScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = "Your Note", style = MaterialTheme.typography.headlineSmall)
+                Text(text = "Your Note", style = MaterialTheme.typography.headlineMedium)
                 IconButton(onClick = {
                     viewModel.onEvent(NotesEvent.ToggleOrderSection)
                 }) {
@@ -109,7 +108,8 @@ fun NotesScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                navController.navigate(Screen.AddEditNoteScreen.route + "?noteId=${note.id}&noteColor=${note.color}")
+                                navController.navigate(Screen.AddEditNoteScreen.route +
+                                        "?noteId=${note.id}&noteColor=${note.color}")
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
