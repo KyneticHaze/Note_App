@@ -104,9 +104,10 @@ fun AddEditNoteScreen(
                         .clip(CircleShape)
                         .background(color)
                         .border(
-                            3.dp, color = if (viewModel.noteColor.value == colorInt) {
+                            width = 3.dp, color = if (viewModel.noteColor.value == colorInt) {
                                 Color.Black
-                            } else Color.Transparent
+                            } else Color.Transparent,
+                            shape = CircleShape
                         )
                         .clickable {
                             scope.launch {
@@ -132,7 +133,7 @@ fun AddEditNoteScreen(
                 },
                 isHintVisible = titleState.isHintVisible,
                 singleLine = true,
-                textStyle = MaterialTheme.typography.headlineSmall
+                textStyle = MaterialTheme.typography.headlineMedium
             )
             Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
@@ -145,7 +146,7 @@ fun AddEditNoteScreen(
                     viewModel.onEvent(AddEditNoteEvent.ChangeContentFocus(it))
                 },
                 isHintVisible = titleState.isHintVisible,
-                textStyle = MaterialTheme.typography.bodySmall,
+                textStyle = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.fillMaxHeight()
             )
         }
